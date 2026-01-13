@@ -1,0 +1,7 @@
+{
+    "version": 2,
+    "framework": "nextjs",
+    "buildCommand": "cd mavtar-prints && npm install && npm run build",
+    "outputDirectory": "mavtar-prints/.next",
+    "installCommand": "cd mavtar-prints && npm install"
+}
