@@ -1,0 +1,343 @@
+@import 'tailwindcss';
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-inter: var(--font-inter), ui-sans-serif, system-ui;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes shimmer {
+    from {
+      transform: translateX(-100%);
+    }
+
+    to {
+      transform: translateX(100%);
+    }
+  }
+}
+
+/* Light Mode Theme (Default) */
+:root {
+  --radius: 0.5rem;
+
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --card: #ffffff;
+  --card-foreground: #171717;
+
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+
+  /* Primary - Purple */
+  --primary: #61358C;
+  --primary-foreground: #ffffff;
+
+  /* Secondary - Light Purple */
+  --secondary: #f5f0fa;
+  --secondary-foreground: #61358C;
+
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+
+  /* Accent - Cyan */
+  --accent: #e6f7fb;
+  --accent-foreground: #11B4D9;
+
+  /* Destructive - Red */
+  --destructive: #F23838;
+  --destructive-foreground: #ffffff;
+
+  /* Success - Green */
+  --success: #0D8C39;
+  --success-foreground: #ffffff;
+
+  /* Warning - Orange */
+  --warning: #F27F3D;
+  --warning-foreground: #ffffff;
+
+  /* Cyan - Secondary accent */
+  --cyan: #11B4D9;
+  --cyan-foreground: #ffffff;
+
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #61358C;
+
+  /* Sidebar Colors */
+  --sidebar-background: #fafafa;
+  --sidebar-foreground: #171717;
+  --sidebar-primary: #61358C;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f0fa;
+  --sidebar-accent-foreground: #61358C;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #61358C;
+
+  /* Custom Colors */
+  --gradient-primary: linear-gradient(135deg, #61358C 0%, #4a2870 100%);
+  --gradient-secondary: linear-gradient(135deg, #11B4D9 0%, #0D8C39 100%);
+  --gradient-warm: linear-gradient(135deg, #F27F3D 0%, #F23838 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* Dark Mode Theme */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+
+  --card: #171717;
+  --card-foreground: #fafafa;
+
+  --popover: #171717;
+  --popover-foreground: #fafafa;
+
+  /* Primary - Purple */
+  --primary: #8b5ebd;
+  --primary-foreground: #ffffff;
+
+  /* Secondary - Dark Purple */
+  --secondary: #2a1a3d;
+  --secondary-foreground: #c9a8e8;
+
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+
+  /* Accent - Cyan */
+  --accent: #0e3a44;
+  --accent-foreground: #4dd4f0;
+
+  /* Destructive - Red */
+  --destructive: #F23838;
+  --destructive-foreground: #ffffff;
+
+  /* Success - Green */
+  --success: #0D8C39;
+  --success-foreground: #ffffff;
+
+  /* Warning - Orange */
+  --warning: #F27F3D;
+  --warning-foreground: #ffffff;
+
+  /* Cyan - Secondary accent */
+  --cyan: #11B4D9;
+  --cyan-foreground: #ffffff;
+
+  --border: #262626;
+  --input: #262626;
+  --ring: #8b5ebd;
+
+  /* Sidebar Colors */
+  --sidebar-background: #0a0a0a;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #8b5ebd;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2a1a3d;
+  --sidebar-accent-foreground: #c9a8e8;
+  --sidebar-border: #262626;
+  --sidebar-ring: #8b5ebd;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+
+  /* Site Container - consistent max-width across all sections */
+  .site-container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    .site-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Marketplace Product Card */
+  .product-card {
+    @apply bg-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Category Chip */
+  .category-chip {
+    @apply px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium transition-all duration-200 cursor-pointer;
+  }
+
+  .category-chip:hover {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Search Bar */
+  .search-bar {
+    @apply w-full px-6 py-4 rounded-full border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all;
+  }
+
+  /* Section Title */
+  .section-title {
+    @apply text-xl font-bold text-foreground;
+  }
+
+  /* Navigation Arrow */
+  .nav-arrow {
+    @apply w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-foreground/60 hover:bg-primary hover:text-white transition-all cursor-pointer;
+  }
+
+  /* Trust Badge */
+  .trust-badge {
+    @apply flex items-center gap-2 text-sm text-muted-foreground;
+  }
+
+  /* Legacy utilities (kept for compatibility) */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .gradient-bg {
+    background-image: var(--gradient-primary);
+  }
+
+  .glass {
+    @apply bg-card/80 backdrop-blur-md border border-border;
+  }
+
+  .glass-heavy {
+    @apply bg-card/90 backdrop-blur-xl border border-border;
+  }
+
+  .card-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .printing-pattern {
+    background-color: transparent;
+    opacity: 0.05;
+    background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer;
+    content: "";
+  }
+
+  .grid-bg {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  }
+
+  .btn-premium {
+    @apply relative overflow-hidden rounded-full bg-primary px-6 py-3 text-white font-medium transition-all hover:bg-primary/90 active:scale-95;
+  }
+
+  .btn-outline-premium {
+    @apply relative overflow-hidden rounded-full border border-primary text-primary font-medium px-6 py-3 transition-all hover:bg-primary hover:text-white;
+  }
+}
