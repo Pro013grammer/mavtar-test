@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -365,7 +365,7 @@ function FilterSidebar({
     );
 }
 
-export default function ProductsPage() {
+function ProductsPageContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const { addItem } = useCart();
@@ -601,3 +601,29 @@ export default function ProductsPage() {
     );
 }
 
+// Loading fallback component
+function ProductsLoading() {
+    return (
+        <div className="min-h-screen pt-24 pb-16">
+            <div className="container mx-auto px-4 lg:px-8">
+                <div className="mb-8">
+                    <div className="h-10 w-48 bg-secondary animate-pulse rounded-lg mb-2"></div>
+                    <div className="h-6 w-64 bg-secondary animate-pulse rounded-lg"></div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                        <div key={i} className="rounded-3xl bg-secondary animate-pulse aspect-[4/3]"></div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default function ProductsPage() {
+    return (
+        <Suspense fallback={<ProductsLoading />}>
+            <ProductsPageContent />
+        </Suspense>
+    );
+}
